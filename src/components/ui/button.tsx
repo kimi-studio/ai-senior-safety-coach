@@ -11,21 +11,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-2xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex items-center justify-center gap-2 rounded-[1.35rem] font-semibold tracking-tight transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-cyan-200/70 disabled:pointer-events-none disabled:opacity-45 active:scale-[0.99]",
           {
-            "bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-sm shadow-teal-500/20 hover:from-teal-600 hover:to-cyan-700 focus:ring-teal-500":
+            "bg-app-gradient text-white shadow-[0_18px_34px_rgba(8,145,178,0.24)] hover:-translate-y-0.5 hover:shadow-[0_22px_38px_rgba(8,145,178,0.28)]":
               variant === "primary",
-            "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500":
+            "bg-white text-slate-900 border border-slate-200 shadow-[0_14px_28px_rgba(15,23,42,0.06)] hover:bg-slate-50 hover:-translate-y-0.5":
               variant === "secondary",
-            "border-2 border-teal-500/80 text-teal-700 hover:bg-teal-50 focus:ring-teal-500":
+            "border-[1.5px] border-cyan-700/20 bg-white/82 text-cyan-900 shadow-[0_12px_26px_rgba(15,23,42,0.05)] hover:bg-cyan-50/80 hover:border-cyan-500/40":
               variant === "outline",
-            "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500":
+            "bg-gradient-to-r from-rose-500 to-orange-500 text-white shadow-[0_16px_30px_rgba(244,63,94,0.22)] hover:-translate-y-0.5 hover:shadow-[0_20px_34px_rgba(244,63,94,0.28)]":
               variant === "danger",
           },
           {
-            "px-4 py-2 text-sm": size === "sm",
-            "px-5 py-3 text-base": size === "md",
-            "px-6 py-4 text-lg": size === "lg",
+            "min-h-[2.9rem] px-4 text-sm": size === "sm",
+            "min-h-[3.5rem] px-5 text-base": size === "md",
+            "min-h-[4rem] px-6 text-lg": size === "lg",
           },
           className
         )}

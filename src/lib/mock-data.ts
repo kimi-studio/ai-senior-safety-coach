@@ -4,6 +4,8 @@ export const mockUser = {
   name: "김순희",
   age: 67,
   interests: ["복약", "운동", "마음 건강"],
+  routineScore: 84,
+  bedtime: "22:30",
 };
 
 export const mockCaregiver = {
@@ -38,10 +40,12 @@ export const todayTasks = [
 
 export const aiCoaching = {
   title: "오늘은 가볍게 산책해볼까요?",
-  reason: "어제 잠을 잘 주무셨네요. 컨디션이 좋을 때 몸을 움직여보면 더 활력이 생길 거예요.",
+  reason:
+    "어제 잠을 잘 주무셨네요. 컨디션이 좋을 때 몸을 조금만 움직이면 활력이 더 오래 유지돼요.",
   action: "10분만 집 근처를 천천히 걸어보세요",
   difficulty: "쉬움",
   duration: "10분",
+  encouragement: "무리하지 않고 숨이 편한 속도로만 걸어도 충분해요.",
 };
 
 export const medications = [
@@ -77,33 +81,6 @@ export const weeklyReport = {
   medicationDays: 6,
   exerciseDays: 5,
 };
-
-export const helpOptions = [
-  {
-    id: 1,
-    title: "몸이 불편해요",
-    icon: "heart",
-    color: "red",
-  },
-  {
-    id: 2,
-    title: "넘어졌어요",
-    icon: "alert",
-    color: "orange",
-  },
-  {
-    id: 3,
-    title: "불안해요",
-    icon: "cloud",
-    color: "blue",
-  },
-  {
-    id: 4,
-    title: "가족에게 연락할래요",
-    icon: "phone",
-    color: "green",
-  },
-];
 
 export const caregiverSummary = {
   lastCheckIn: "오늘 오전 10:30",
