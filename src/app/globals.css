@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --primary: 185 71% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 180 25% 94%;
+  --secondary-foreground: 185 71% 25%;
+  --accent: 25 95% 53%;
+  --accent-foreground: 0 0% 100%;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --success: 142 71% 45%;
+  --warning: 38 92% 50%;
+  --danger: 0 72% 51%;
+  --app-max: 430px;
+  --page-max: 1120px;
+  --page-wide: 1240px;
+  --radius-card: 20px;
+  --shadow-card: 0 18px 40px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: #f7f8fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+@layer components {
+  .app-shell {
+    min-height: 100vh;
+    background: #f7f8fa;
+    padding-bottom: 6.5rem;
+  }
+
+  .app-container {
+    width: 100%;
+    max-width: var(--app-max);
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .page-container {
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-container-wide {
+    width: 100%;
+    max-width: var(--page-wide);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-container-narrow {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-pad {
+    padding: 5.5rem 0;
+  }
+
+  .surface-card {
+    border-radius: var(--radius-card);
+    border: 1px solid hsl(var(--border));
+    background: #ffffff;
+    box-shadow: var(--shadow-card);
+  }
+
+  .surface-soft {
+    border-radius: var(--radius-card);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
