@@ -1,101 +1,113 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Shield, Users } from "lucide-react";
+import { Heart, ShieldCheck, Sparkles, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
+
+const highlights = [
+  "오늘 해야 할 일을 한눈에 보여주는 홈 화면",
+  "불안하거나 몸이 불편할 때 바로 이어지는 도움 요청",
+  "보호자에게는 꼭 필요한 순간만 전달하는 안심 연동",
+];
 
 export default function WelcomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50">
-      <div className="page-container-wide py-12 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative">
-                <div className="w-24 h-24 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-3xl flex items-center justify-center shadow-[0_16px_32px_rgba(20,184,166,0.35)]">
-                  <Heart className="w-14 h-14 text-white fill-white" />
+    <div className="min-h-screen overflow-hidden">
+      <div className="page-container-wide py-8 sm:py-10 lg:py-14">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+          <section className="space-y-7 text-center lg:text-left">
+            <div className="space-y-5">
+              <div className="eyebrow mx-auto lg:mx-0">
+                <Sparkles className="h-4 w-4" />
+                중장년층을 위한 AI 생활 코치
+              </div>
+              <div className="inline-flex items-center justify-center lg:justify-start">
+                <div className="hero-panel flex h-24 w-24 items-center justify-center rounded-[2rem]">
+                  <Heart className="h-12 w-12 fill-white text-white" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center shadow-[0_8px_16px_rgba(249,115,22,0.35)]">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
+              </div>
+              <div className="space-y-4">
+                <h1 className="text-balance text-5xl font-bold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+                  안심하루
+                </h1>
+                <p className="text-balance text-2xl font-semibold text-cyan-950/90 sm:text-3xl">
+                  매일을 안심하고 건강하게 보내는 가장 쉬운 방법
+                </p>
+                <p className="mx-auto max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl lg:mx-0">
+                  오늘 해야 할 일은 또렷하게, AI 코칭은 부담 없게, 가족 연결은 필요한 순간만.
+                  중장년층이 편안하게 쓰는 생활 루틴 앱을 더 따뜻하고 단단한 경험으로 만들었습니다.
+                </p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-                안심하루
-              </h1>
-              <p className="text-xl sm:text-2xl text-gray-700 font-medium">
-                매일을 안심하고 건강하게
-              </p>
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                오늘 해야 할 일을 쉽게 알려주고, 필요할 때 가족까지 연결되는
-                중장년층 맞춤 AI 생활 코칭 서비스입니다.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <Link href="/onboarding" className="block w-full sm:w-auto">
-                <Button className="w-full sm:min-w-[180px]" size="lg">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <Link href="/onboarding" className="block">
+                <Button className="w-full sm:min-w-[210px]" size="lg">
                   시작하기
+                  <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/presentation" className="block w-full sm:w-auto">
-                <Button variant="outline" className="w-full sm:min-w-[180px]" size="md">
+              <Link href="/presentation" className="block">
+                <Button variant="outline" className="w-full sm:min-w-[210px]" size="lg">
                   서비스 소개 보기
                 </Button>
               </Link>
             </div>
-          </div>
 
-          <div className="space-y-4">
-            <div className="surface-soft p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                오늘의 안심 루틴
-              </h2>
-              <div className="space-y-3">
-                <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl">
-                  <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-7 h-7 text-teal-600" />
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="metric-card text-left">
+                <p className="text-sm font-semibold text-slate-500">큰 글씨 · 큰 버튼</p>
+                <p className="mt-2 text-xl font-bold text-slate-900">읽기 쉬운 UI</p>
+              </div>
+              <div className="metric-card text-left">
+                <p className="text-sm font-semibold text-slate-500">AI 코칭</p>
+                <p className="mt-2 text-xl font-bold text-slate-900">작고 실천 가능한 제안</p>
+              </div>
+              <div className="metric-card text-left">
+                <p className="text-sm font-semibold text-slate-500">보호자 연결</p>
+                <p className="mt-2 text-xl font-bold text-slate-900">감시 아닌 안심</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="space-y-5">
+            <div className="hero-panel p-6 sm:p-8">
+              <div className="relative z-10 space-y-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-white/75">오늘의 안심 루틴</p>
+                    <h2 className="mt-2 text-3xl font-bold sm:text-4xl">한 번에 한 가지씩, 차분하게</h2>
                   </div>
-                  <p className="text-base text-left text-gray-700">
-                    오늘 해야 할 일을 쉽게 알려드려요
-                  </p>
+                  <div className="rounded-2xl bg-white/15 p-3 backdrop-blur">
+                    <ShieldCheck className="h-7 w-7" />
+                  </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl">
-                  <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-7 h-7 text-cyan-600" />
-                  </div>
-                  <p className="text-base text-left text-gray-700">
-                    불안할 때 바로 도움을 드려요
-                  </p>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl">
-                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Users className="w-7 h-7 text-blue-600" />
-                  </div>
-                  <p className="text-base text-left text-gray-700">
-                    가족과 안심하고 연결해드려요
-                  </p>
+                <div className="space-y-3 rounded-[1.7rem] bg-white/14 p-4 backdrop-blur-sm">
+                  {highlights.map((item) => (
+                    <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/10 p-4">
+                      <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-cyan-100" />
+                      <p className="text-lg leading-7 text-white/95">{item}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="surface-card p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500 mb-2">AI 코치 미리보기</p>
-                  <p className="text-lg font-semibold text-gray-900">
-                    오늘은 10분 산책 어떠세요?
-                  </p>
-                  <p className="text-sm text-gray-600 mt-2">
-                    실천 가능한 작은 행동을 제안해드려요
-                  </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="surface-card p-6">
+                <div className="feature-icon mb-4">
+                  <Sparkles className="h-6 w-6" />
                 </div>
-                <div className="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center text-2xl">
-                  💡
+                <h3 className="text-2xl font-bold text-slate-900">오늘의 코칭</h3>
+                <p className="mt-2 text-lg leading-7 text-slate-600">&ldquo;오늘은 10분만 집 앞을 걸어보세요&rdquo;처럼 부담 없는 제안만 드려요.</p>
+              </div>
+              <div className="surface-card p-6">
+                <div className="feature-icon mb-4">
+                  <Users className="h-6 w-6" />
                 </div>
+                <h3 className="text-2xl font-bold text-slate-900">가족 안심 연결</h3>
+                <p className="mt-2 text-lg leading-7 text-slate-600">정말 필요한 순간에만 보호자와 연결되도록 설계했어요.</p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

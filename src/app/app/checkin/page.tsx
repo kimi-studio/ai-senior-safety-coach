@@ -9,14 +9,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const moods = [
-  { id: "good", label: "좋아요", icon: Smile, color: "green" },
-  { id: "ok", label: "보통이에요", icon: Meh, color: "yellow" },
-  { id: "bad", label: "조금 안 좋아요", icon: Frown, color: "orange" },
+  { id: "good", label: "좋아요", icon: Smile, tone: "text-emerald-500" },
+  { id: "ok", label: "보통이에요", icon: Meh, tone: "text-amber-500" },
+  { id: "bad", label: "조금 안 좋아요", icon: Frown, tone: "text-orange-500" },
 ];
 
-const symptoms = [
-  "두통", "어지러움", "피곤함", "소화불량", "관절 통증", "수면 부족"
-];
+const symptoms = ["두통", "어지러움", "피곤함", "소화불량", "관절 통증", "수면 부족"];
 
 export default function CheckinPage() {
   const router = useRouter();
@@ -24,112 +22,36 @@ export default function CheckinPage() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [memo, setMemo] = useState("");
 
-  const toggleSymptom = (symptom: string) => {
-    setSelectedSymptoms((prev) =>
-      prev.includes(symptom)
-        ? prev.filter((s) => s !== symptom)
-        : [...prev, symptom]
-    );
-  };
-
-  const handleSave = () => {
-    router.push("/app/checkin/complete");
-  };
+  const toggleSymptom = (symptom: string) => setSelectedSymptoms((prev) => prev.includes(symptom) ? prev.filter((s) => s !== symptom) : [...prev, symptom]);
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-24">
+    <div className="app-shell">
       <AppHeader title="오늘의 체크인" showBack />
-
-      <div className="max-w-md mx-auto px-6 py-6 space-y-6">
-        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold">오늘 컨디션은 어떠세요?</h2>
-          <p className="text-xl text-gray-600">솔직하게 알려주세요</p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4">
+      <div className="app-container space-y-5">
+        <Card className="bg-[linear-gradient(135deg,#ecfeff_0%,#ffffff_100%)]">
+          <CardContent className="space-y-2 p-6">
+            <h2 className="text-3xl font-bold tracking-tight">오늘 컨디션은 어떠세요?</h2>
+            <p className="text-lg leading-8 text-slate-600">한 번의 선택만으로 충분해요. 솔직하게 알려주시면 오늘 코칭을 더 편안하게 맞춰드릴게요.</p>
+          </CardContent>
+        </Card>
+        <div className="grid grid-cols-3 gap-3">
           {moods.map((mood) => {
             const Icon = mood.icon;
             const isSelected = selectedMood === mood.id;
-
             return (
-              <button
-                key={mood.id}
-                onClick={() => setSelectedMood(mood.id)}
-                className={`p-6 rounded-2xl border-2 transition-all ${
-                  isSelected
-                    ? "border-teal-500 bg-teal-50 shadow-md"
-                    : "border-gray-200 bg-white hover:border-gray-300"
-                }`}
-              >
+              <button key={mood.id} onClick={() => setSelectedMood(mood.id)} className={`rounded-[1.6rem] border p-4 transition-all ${isSelected ? "border-cyan-500 bg-cyan-50 shadow-[0_14px_28px_rgba(6,182,212,0.14)]" : "border-slate-200 bg-white hover:border-slate-300"}`}>
                 <div className="flex flex-col items-center gap-3">
-                  <Icon
-                    className={`w-12 h-12 ${
-                      mood.color === "green"
-                        ? "text-green-500"
-                        : mood.color === "yellow"
-                        ? "text-yellow-500"
-                        : "text-orange-500"
-                    }`}
-                  />
-                  <span className="text-lg font-semibold text-center leading-tight">
-                    {mood.label}
-                  </span>
+                  <Icon className={`h-11 w-11 ${mood.tone}`} />
+                  <span className="text-lg font-bold text-slate-900 leading-tight text-center">{mood.label}</span>
                 </div>
               </button>
             );
           })}
         </div>
-
-        {selectedMood && (
-          <Card>
-            <CardContent className="p-6 space-y-4">
-              <h3 className="text-2xl font-bold">불편한 증상이 있나요?</h3>
-              <p className="text-lg text-gray-600">선택 사항이에요</p>
-              <div className="grid grid-cols-2 gap-3">
-                {symptoms.map((symptom) => {
-                  const isSelected = selectedSymptoms.includes(symptom);
-                  return (
-                    <button
-                      key={symptom}
-                      onClick={() => toggleSymptom(symptom)}
-                      className={`px-4 py-3 rounded-xl border-2 text-lg font-medium transition-all ${
-                        isSelected
-                          ? "border-teal-500 bg-teal-50 text-teal-700"
-                          : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
-                      }`}
-                    >
-                      {symptom}
-                    </button>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {selectedMood && (
-          <Card>
-            <CardContent className="p-6 space-y-4">
-              <h3 className="text-2xl font-bold">추가로 남기실 말씀</h3>
-              <textarea
-                value={memo}
-                onChange={(e) => setMemo(e.target.value)}
-                placeholder="특별히 기억하고 싶은 내용을 적어주세요 (선택)"
-                className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:outline-none focus:border-teal-500 min-h-[100px]"
-              />
-            </CardContent>
-          </Card>
-        )}
-
-        <Button
-          onClick={handleSave}
-          disabled={!selectedMood}
-          className="w-full"
-        >
-          저장하기
-        </Button>
+        {selectedMood && <Card><CardContent className="space-y-4 p-6"><h3 className="text-2xl font-bold">불편한 증상이 있나요?</h3><div className="grid grid-cols-2 gap-3">{symptoms.map((symptom) => <button key={symptom} onClick={() => toggleSymptom(symptom)} className={`rounded-2xl border px-4 py-3 text-lg font-semibold transition ${selectedSymptoms.includes(symptom) ? "border-cyan-500 bg-cyan-50 text-cyan-900" : "border-slate-200 bg-white text-slate-700"}`}>{symptom}</button>)}</div></CardContent></Card>}
+        {selectedMood && <Card><CardContent className="space-y-4 p-6"><h3 className="text-2xl font-bold">추가로 남기실 말씀</h3><textarea value={memo} onChange={(e) => setMemo(e.target.value)} placeholder="특별히 기억하고 싶은 내용을 적어주세요 (선택)" className="form-field min-h-[120px]" /></CardContent></Card>}
+        <Button onClick={() => router.push("/app/checkin/complete")} disabled={!selectedMood} className="w-full">저장하기</Button>
       </div>
-
       <BottomNav />
     </div>
   );

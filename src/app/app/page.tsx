@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BottomNav } from "@/components/bottom-nav";
 import { todayTasks, aiCoaching, mockUser } from "@/lib/mock-data";
-import { CheckCircle2, Circle, Sparkles, AlertCircle, Phone } from "lucide-react";
+import { CheckCircle2, Circle, Sparkles, Phone, HeartPulse, Pill, Users, ArrowRight, Clock3 } from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -15,125 +15,136 @@ export default function HomePage() {
     weekday: "long",
   });
 
+  const completedCount = todayTasks.filter((task) => task.completed).length;
+
   return (
     <div className="app-shell">
-      <div className="app-container px-4">
-        <div className="bg-gradient-to-br from-teal-500 to-cyan-600 text-white p-7 rounded-3xl shadow-[0_18px_35px_rgba(13,148,136,0.3)]">
-          <div className="space-y-2">
-            <p className="text-base sm:text-lg opacity-90">{dateStr}</p>
-            <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
-              {mockUser.name}님,<br />
-              {greeting}!
-            </h1>
-          </div>
-        </div>
+      <div className="app-container space-y-5">
+        <section className="hero-panel p-6 sm:p-7">
+          <div className="relative z-10 space-y-6">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-base opacity-80">{dateStr}</p>
+                <h1 className="mt-2 text-4xl font-bold leading-tight tracking-tight">
+                  {mockUser.name}님,
+                  <br />{greeting}
+                </h1>
+              </div>
+              <div className="rounded-[1.4rem] bg-white/14 p-3 backdrop-blur">
+                <HeartPulse className="h-7 w-7" />
+              </div>
+            </div>
 
-        <div className="px-2 -mt-4 space-y-6">
-          <Link href="/app/help">
-            <Card className="bg-gradient-to-r from-orange-500 to-pink-500 border-0 text-white shadow-[0_16px_30px_rgba(244,114,182,0.3)] hover:shadow-[0_20px_38px_rgba(244,114,182,0.35)] transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center">
-                      <Phone className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold">도움이 필요하세요?</h3>
-                      <p className="text-base sm:text-lg opacity-90">바로 연결해드릴게요</p>
-                    </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-[1.4rem] bg-white/14 p-4 backdrop-blur-sm">
+                <p className="text-sm text-white/75">오늘 달성</p>
+                <p className="mt-1 text-3xl font-bold">{completedCount}/{todayTasks.length}</p>
+                <p className="text-sm text-white/80">루틴 완료</p>
+              </div>
+              <div className="rounded-[1.4rem] bg-white/14 p-4 backdrop-blur-sm">
+                <p className="text-sm text-white/75">안심 점수</p>
+                <p className="mt-1 text-3xl font-bold">84점</p>
+                <p className="text-sm text-white/80">평소보다 좋아요</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Link href="/app/help">
+          <Card className="overflow-hidden border-0 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 text-white shadow-[0_20px_36px_rgba(249,115,22,0.22)]">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/18 backdrop-blur-sm">
+                    <Phone className="h-7 w-7" />
                   </div>
-                  <AlertCircle className="w-8 h-8" />
+                  <div>
+                    <h2 className="text-2xl font-bold">도움이 필요하세요?</h2>
+                    <p className="text-base text-white/88">지금 바로 도움 요청 화면으로 이동해요</p>
+                  </div>
+                </div>
+                <ArrowRight className="h-7 w-7 shrink-0" />
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Sparkles className="h-7 w-7 text-cyan-700" />
+              오늘의 AI 코칭
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(236,254,255,1),rgba(236,253,245,1))] p-5">
+              <h3 className="text-[1.6rem] font-bold leading-tight text-slate-900">{aiCoaching.title}</h3>
+              <p className="mt-3 text-lg leading-8 text-slate-600">{aiCoaching.reason}</p>
+            </div>
+            <div className="surface-soft p-4">
+              <p className="text-sm font-semibold text-cyan-900/70">오늘의 한 걸음</p>
+              <p className="mt-1 text-xl font-bold text-cyan-950">💡 {aiCoaching.action}</p>
+            </div>
+            <Link href="/app/coaching">
+              <Button variant="outline" className="w-full" size="md">자세히 보기</Button>
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>오늘 할 일</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {todayTasks.map((task) => (
+              <div key={task.id} className="list-tile flex items-center gap-4">
+                {task.completed ? (
+                  <CheckCircle2 className="h-8 w-8 shrink-0 text-emerald-600" />
+                ) : (
+                  <Circle className="h-8 w-8 shrink-0 text-slate-300" />
+                )}
+                <div className="flex-1">
+                  <p className={`text-xl font-bold ${task.completed ? "text-slate-400 line-through" : "text-slate-900"}`}>
+                    {task.title}
+                  </p>
+                  <div className="mt-1 flex items-center gap-2 text-base text-slate-500">
+                    <Clock3 className="h-4 w-4" />
+                    {task.time}
+                  </div>
+                </div>
+                {!task.completed && task.type === "checkin" && (
+                  <Link href="/app/checkin">
+                    <Button size="sm">하기</Button>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <div className="grid grid-cols-2 gap-4">
+          <Link href="/app/medication">
+            <Card className="h-full">
+              <CardContent className="flex h-full flex-col justify-between p-6 text-left">
+                <div className="feature-icon mb-4"><Pill className="h-7 w-7" /></div>
+                <div>
+                  <p className="text-xl font-bold text-slate-900">복약 관리</p>
+                  <p className="mt-2 text-base leading-6 text-slate-500">오늘 약 일정과 재알림을 한 번에 확인해요</p>
                 </div>
               </CardContent>
             </Card>
           </Link>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Sparkles className="w-7 h-7 text-teal-600" />
-                오늘의 AI 코칭
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                  {aiCoaching.title}
-                </h3>
-                <p className="text-base sm:text-lg text-gray-600">
-                  {aiCoaching.reason}
-                </p>
-              </div>
-              <div className="bg-teal-50 p-4 rounded-2xl">
-                <p className="text-lg sm:text-xl font-semibold text-teal-900">
-                  💡 {aiCoaching.action}
-                </p>
-              </div>
-              <Link href="/app/coaching">
-                <Button variant="outline" className="w-full" size="md">
-                  자세히 보기
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>오늘 할 일</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {todayTasks.map((task) => (
-                <div
-                  key={task.id}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl"
-                >
-                  {task.completed ? (
-                    <CheckCircle2 className="w-8 h-8 text-teal-600 flex-shrink-0" />
-                  ) : (
-                    <Circle className="w-8 h-8 text-gray-400 flex-shrink-0" />
-                  )}
-                  <div className="flex-1">
-                    <p
-                      className={`text-lg sm:text-xl font-semibold ${
-                        task.completed ? "text-gray-500 line-through" : "text-gray-900"
-                      }`}
-                    >
-                      {task.title}
-                    </p>
-                    <p className="text-base sm:text-lg text-gray-500">{task.time}</p>
-                  </div>
-                  {!task.completed && task.type === "checkin" && (
-                    <Link href="/app/checkin">
-                      <Button size="sm">하기</Button>
-                    </Link>
-                  )}
+          <Link href="/app/family">
+            <Card className="h-full">
+              <CardContent className="flex h-full flex-col justify-between p-6 text-left">
+                <div className="feature-icon mb-4"><Users className="h-7 w-7" /></div>
+                <div>
+                  <p className="text-xl font-bold text-slate-900">가족 연동</p>
+                  <p className="mt-2 text-base leading-6 text-slate-500">안심 공유 범위를 쉽게 조절할 수 있어요</p>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <div className="grid grid-cols-2 gap-4">
-            <Link href="/app/medication">
-              <Card className="hover:shadow-md transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <span className="text-3xl">💊</span>
-                  </div>
-                  <p className="text-lg sm:text-xl font-bold">복약 관리</p>
-                </CardContent>
-              </Card>
-            </Link>
-            <Link href="/app/family">
-              <Card className="hover:shadow-md transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <span className="text-3xl">👨‍👩‍👦</span>
-                  </div>
-                  <p className="text-lg sm:text-xl font-bold">가족 연동</p>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
 
