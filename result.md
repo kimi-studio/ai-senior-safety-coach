@@ -1,25 +1,24 @@
 # Design refactor result
 
 ## What changed
-- Introduced a stronger visual system in `src/app/globals.css` with upgraded color tokens, glassy surfaces, larger radii, softer gradients, improved shadows, and reusable layout/section utility classes.
-- Refined shared primitives (`Button`, `Card`, `AppHeader`, `BottomNav`) for a more polished, premium, senior-friendly feel with larger touch targets and clearer hierarchy.
-- Reworked the main experience across landing, onboarding, app home, check-in, coaching, medication, family, notifications, report, settings, and support flows to use the new system consistently.
-- Reworked caregiver views and presentation page so both the app and `/presentation` feel visually coherent and stakeholder-ready.
-- Fixed project config issues encountered during verification:
-  - corrected the font subset usage in `src/app/layout.tsx`
-  - set `turbopack.root` in `next.config.ts`
-  - replaced the ESLint flat config with a working `eslint-config-next` setup
+- Rebuilt the global layout system in `src/app/globals.css` with wider container widths, consistent section paddings, and a reusable vertical rhythm utility.
+- Rebalanced the landing hero layout in `src/app/page.tsx` to add vertical space, fix the two-column ratio, and improve CTA/feature spacing.
+- Expanded card padding and hierarchy in shared primitives (`src/components/ui/card.tsx`) plus landing/presentation/caregiver/app screens for calmer, premium spacing.
+- Tightened presentation page structure in `src/app/presentation/page.tsx` with larger hero padding, more even grids, and improved list rhythm.
 
 ## Verification
-- `npm run build` ✅
 - `npm run lint` ✅
+- `npm run build` ❌ (`ERROR: SecItemCopyMatching failed -50` even with `NEXT_TELEMETRY_DISABLED=1`)
 
 ## Commits
-- `253354a` — `design: establish premium senior-friendly UI system`
-- `2ba2479` — `feat: refresh app and presentation experience`
+- Not created (git cannot write `.git/index.lock` in this environment)
 
 ## Deployment
-- Pushed to `origin/main`
-- Production deployment ready on Vercel ✅
-- Primary URL: https://ai-senior-safety-coach.vercel.app
-- Deployment URL: https://ai-senior-safety-coach-20tupw0la-namung-kims-projects.vercel.app
+- Not pushed (blocked by git index write permissions)
+- Production verification attempt failed: web fetch returned `Cache miss` for `https://ai-senior-safety-coach.vercel.app`
+
+## Layout issues fixed
+- Added vertical breathing room in the hero and improved CTA/feature rhythm.
+- Rebalanced two-column hero proportions and increased right-panel padding.
+- Increased card padding and list spacing to strengthen hierarchy.
+- Standardized container widths and section spacing for more consistent page rhythm.

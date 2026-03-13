@@ -19,9 +19,9 @@ export default function HomePage() {
 
   return (
     <div className="app-shell">
-      <div className="app-container space-y-5">
-        <section className="hero-panel p-6 sm:p-7">
-          <div className="relative z-10 space-y-6">
+      <div className="app-container space-y-6">
+        <section className="hero-panel p-7 sm:p-8">
+          <div className="relative z-10 space-y-7">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-base opacity-80">{dateStr}</p>
@@ -35,13 +35,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-[1.4rem] bg-white/14 p-4 backdrop-blur-sm">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-[1.4rem] bg-white/14 p-5 backdrop-blur-sm">
                 <p className="text-sm text-white/75">오늘 달성</p>
                 <p className="mt-1 text-3xl font-bold">{completedCount}/{todayTasks.length}</p>
                 <p className="text-sm text-white/80">루틴 완료</p>
               </div>
-              <div className="rounded-[1.4rem] bg-white/14 p-4 backdrop-blur-sm">
+              <div className="rounded-[1.4rem] bg-white/14 p-5 backdrop-blur-sm">
                 <p className="text-sm text-white/75">안심 점수</p>
                 <p className="mt-1 text-3xl font-bold">84점</p>
                 <p className="text-sm text-white/80">평소보다 좋아요</p>
@@ -52,7 +52,7 @@ export default function HomePage() {
 
         <Link href="/app/help">
           <Card className="overflow-hidden border-0 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 text-white shadow-[0_20px_36px_rgba(249,115,22,0.22)]">
-            <CardContent className="p-6">
+            <CardContent className="p-7">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/18 backdrop-blur-sm">
@@ -81,7 +81,7 @@ export default function HomePage() {
               <h3 className="text-[1.6rem] font-bold leading-tight text-slate-900">{aiCoaching.title}</h3>
               <p className="mt-3 text-lg leading-8 text-slate-600">{aiCoaching.reason}</p>
             </div>
-            <div className="surface-soft p-4">
+            <div className="surface-soft p-5">
               <p className="text-sm font-semibold text-cyan-900/70">오늘의 한 걸음</p>
               <p className="mt-1 text-xl font-bold text-cyan-950">💡 {aiCoaching.action}</p>
             </div>
@@ -122,10 +122,10 @@ export default function HomePage() {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-5">
           <Link href="/app/medication">
             <Card className="h-full">
-              <CardContent className="flex h-full flex-col justify-between p-6 text-left">
+              <CardContent className="flex h-full flex-col justify-between p-7 text-left">
                 <div className="feature-icon mb-4"><Pill className="h-7 w-7" /></div>
                 <div>
                   <p className="text-xl font-bold text-slate-900">복약 관리</p>
@@ -136,7 +136,7 @@ export default function HomePage() {
           </Link>
           <Link href="/app/family">
             <Card className="h-full">
-              <CardContent className="flex h-full flex-col justify-between p-6 text-left">
+              <CardContent className="flex h-full flex-col justify-between p-7 text-left">
                 <div className="feature-icon mb-4"><Users className="h-7 w-7" /></div>
                 <div>
                   <p className="text-xl font-bold text-slate-900">가족 연동</p>

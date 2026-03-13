@@ -75,9 +75,9 @@ export default function PresentationPage() {
     <div className="min-h-screen bg-[linear-gradient(180deg,#f8fbfd_0%,#f3f7fb_35%,#ffffff_100%)] text-slate-900">
       <section className="presentation-section overflow-hidden">
         <div className="page-container-wide">
-          <div className="hero-panel p-8 sm:p-10 lg:p-14">
-            <div className="relative z-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <div className="space-y-6">
+          <div className="hero-panel p-10 sm:p-12 lg:p-14">
+            <div className="relative z-10 grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+              <div className="space-y-7">
                 <div className="eyebrow bg-white/16 text-white border-white/15">
                   <Sparkles className="h-4 w-4" />
                   안심하루 서비스 제안
@@ -102,14 +102,14 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-5 sm:grid-cols-2">
                 {[
                   ["핵심 가치", "실천 중심의 생활 코칭"],
                   ["주요 대상", "55~72세 본 사용자 + 40~60대 보호자"],
                   ["핵심 기능", "체크인 · 복약 · 도움 요청 · 안심 공유"],
                   ["차별점", "감시가 아닌 안심 경험 설계"],
                 ].map(([label, value]) => (
-                  <div key={label} className="rounded-[1.8rem] bg-white/14 p-5 backdrop-blur-sm">
+                  <div key={label} className="rounded-[1.8rem] bg-white/14 p-6 backdrop-blur-sm">
                     <p className="text-sm font-semibold text-white/70">{label}</p>
                     <p className="mt-2 text-2xl font-bold leading-tight text-white">{value}</p>
                   </div>
@@ -128,11 +128,11 @@ export default function PresentationPage() {
             <p className="section-copy max-w-3xl">기존 건강 앱의 정보 과잉과 보호자 서비스의 알림 피로 사이를 메우는 생활 밀착형 경험이 필요합니다.</p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <Card className="presentation-grid-card bg-[linear-gradient(180deg,#fff7ed_0%,#ffffff_100%)]">
               <CardContent className="space-y-5 p-0">
                 <h3 className="text-3xl font-bold">본 사용자 Pain Point</h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {painPoints.users.map((item) => (
                     <div key={item} className="list-tile flex items-start gap-3 bg-white/80">
                       <CheckCircle className="mt-1 h-5 w-5 shrink-0 text-orange-500" />
@@ -145,7 +145,7 @@ export default function PresentationPage() {
             <Card className="presentation-grid-card bg-[linear-gradient(180deg,#eff6ff_0%,#ffffff_100%)]">
               <CardContent className="space-y-5 p-0">
                 <h3 className="text-3xl font-bold">보호자 Pain Point</h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {painPoints.caregivers.map((item) => (
                     <div key={item} className="list-tile flex items-start gap-3 bg-white/80">
                       <CheckCircle className="mt-1 h-5 w-5 shrink-0 text-blue-500" />
@@ -166,7 +166,7 @@ export default function PresentationPage() {
             <h2 className="section-title">안심하루가 경험을 설계하는 방식</h2>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {principles.map((item) => {
               const Icon = item.icon;
               return (
@@ -185,7 +185,7 @@ export default function PresentationPage() {
 
       <section className="presentation-section">
         <div className="page-container-wide">
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div className="section-heading">
               <div className="eyebrow">정보 구조</div>
               <h2 className="section-title">사용자와 보호자 모두가 길을 잃지 않는 IA</h2>
@@ -230,14 +230,14 @@ export default function PresentationPage() {
             <div className="eyebrow">핵심 플로우</div>
             <h2 className="section-title">실행과 안심이 이어지는 대표 시나리오</h2>
           </div>
-          <div className="mt-12 grid gap-6 xl:grid-cols-3">
+          <div className="mt-14 grid gap-6 xl:grid-cols-3">
             {flows.map((flow) => (
               <Card key={flow.title} className="presentation-grid-card overflow-hidden">
                 <CardContent className="p-0">
                   <div className={`rounded-[1.6rem] bg-gradient-to-r ${flow.color} p-5 text-white`}>
                     <h3 className="text-3xl font-bold">{flow.title}</h3>
                   </div>
-                  <div className="mt-5 flex flex-wrap gap-3">
+                  <div className="mt-6 flex flex-wrap gap-3">
                     {flow.steps.map((step, idx) => (
                       <div key={step} className="info-chip">
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-900 text-xs font-bold text-white">{idx + 1}</span>

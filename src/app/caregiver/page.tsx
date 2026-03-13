@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function CaregiverHomePage() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(191,219,254,0.36),_transparent_28%),linear-gradient(180deg,_#f8fbff_0%,_#eef4fb_100%)]">
-      <div className="page-container-narrow py-8 sm:py-10 space-y-6">
-        <section className="hero-panel p-6 sm:p-8">
+      <div className="page-container-narrow py-10 sm:py-12 space-y-7">
+        <section className="hero-panel p-7 sm:p-9">
           <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
               <div className="eyebrow bg-white/16 text-white border-white/15">보호자 모드</div>
@@ -21,9 +21,9 @@ export default function CaregiverHomePage() {
           </div>
         </section>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           <Card className="bg-emerald-50/90">
-            <CardContent className="p-6 text-center">
+            <CardContent className="p-7 text-center">
               <CheckCircle className="mx-auto mb-3 h-12 w-12 text-emerald-600" />
               <p className="text-sm font-semibold text-emerald-800/70">마지막 체크인</p>
               <p className="mt-2 text-2xl font-bold text-emerald-950">{caregiverSummary.lastCheckIn}</p>
@@ -31,7 +31,7 @@ export default function CaregiverHomePage() {
             </CardContent>
           </Card>
           <Card className="bg-sky-50/90">
-            <CardContent className="p-6 text-center">
+            <CardContent className="p-7 text-center">
               <Activity className="mx-auto mb-3 h-12 w-12 text-sky-600" />
               <p className="text-sm font-semibold text-sky-800/70">복약 상태</p>
               <p className="mt-2 text-2xl font-bold text-sky-950">{caregiverSummary.medicationStatus}</p>
@@ -39,7 +39,7 @@ export default function CaregiverHomePage() {
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-6 text-center">
+            <CardContent className="p-7 text-center">
               <AlertCircle className="mx-auto mb-3 h-12 w-12 text-slate-400" />
               <p className="text-sm font-semibold text-slate-500">위험 이벤트</p>
               <p className="mt-2 text-2xl font-bold text-slate-950">{caregiverSummary.todayEvents}건</p>
@@ -80,7 +80,7 @@ export default function CaregiverHomePage() {
 
           <div className="space-y-6">
             <Card className="bg-[linear-gradient(135deg,rgba(236,253,245,1),rgba(239,246,255,1))]">
-              <CardContent className="p-6">
+              <CardContent className="p-7">
                 <div className="flex items-start gap-4">
                   <div className="feature-icon"><ShieldCheck className="h-6 w-6" /></div>
                   <div>
@@ -94,7 +94,7 @@ export default function CaregiverHomePage() {
             </Card>
 
             <Card>
-              <CardContent className="p-6 space-y-4">
+              <CardContent className="p-7 space-y-4">
                 <div>
                   <p className="text-sm font-semibold text-slate-500">주 보호자</p>
                   <p className="mt-1 text-2xl font-bold text-slate-900">{mockCaregiver.name} · {mockCaregiver.relation}</p>
