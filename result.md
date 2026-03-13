@@ -1,7 +1,7 @@
 Summary:
-- Tightened hero typography and line lengths on the landing and presentation pages to prevent oversized headings and wrapping.
-- Balanced the two-column hero grids and reduced card/chip density to eliminate overlap and improve spacing.
-- Tuned global page width and hero-section spacing for a calmer, premium desktop rhythm.
+- Increased global section rhythm, container padding, and max widths for a calmer layout across both pages.
+- Expanded card, chip, and list padding plus internal gaps to reduce visual density without enlarging type.
+- Opened up hero, grid, and CTA spacing to give headings and text blocks more breathing room.
 
 Validation:
 - npm run lint (pass)
