@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+  :root {
   --primary: 188 78% 35%;
   --primary-strong: 193 88% 26%;
   --primary-soft: 186 60% 95%;
@@ -20,7 +20,7 @@
   --danger: 0 74% 55%;
   --app-max: 440px;
   --page-max: 1180px;
-  --page-wide: 1320px;
+  --page-wide: 1200px;
   --section-y: clamp(4.5rem, 8vw, 7.5rem);
   --section-y-tight: clamp(3.25rem, 6vw, 5rem);
   --section-gap: clamp(2rem, 4vw, 3.5rem);
@@ -179,6 +179,12 @@ textarea {
     background: rgba(255, 255, 255, 0.1);
   }
 
+  .hero-panel .metric-card,
+  .hero-panel .info-chip,
+  .hero-panel .surface-card {
+    box-shadow: none;
+  }
+
   .section-heading {
     display: flex;
     flex-direction: column;
@@ -272,6 +278,12 @@ textarea {
   .presentation-grid-card {
     height: 100%;
     padding: 2.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .presentation-section:first-of-type {
+      padding-top: clamp(4.5rem, 6vw, 6rem);
+    }
   }
 }
 

@@ -76,23 +76,23 @@ export default function PresentationPage() {
       <section className="presentation-section overflow-hidden">
         <div className="page-container-wide">
           <div className="hero-panel p-10 sm:p-12 lg:p-14">
-            <div className="relative z-10 grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-              <div className="space-y-7">
+            <div className="relative z-10 grid gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+              <div className="space-y-6">
                 <div className="eyebrow bg-white/16 text-white border-white/15">
                   <Sparkles className="h-4 w-4" />
                   안심하루 서비스 제안
                 </div>
                 <div className="space-y-4">
-                  <h1 className="text-balance text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+                  <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3.75rem]">
                     중장년층을 위한
                     <br />AI 생활 코치와 안전 연결 경험
                   </h1>
-                  <p className="max-w-3xl text-xl leading-9 text-white/88 sm:text-2xl">
+                  <p className="max-w-2xl text-lg leading-8 text-white/88 sm:text-xl">
                     오늘의 루틴을 쉽게 실천하게 돕고, 필요할 때 가족까지 자연스럽게 연결하는
                     고령친화형 케어 서비스입니다.
                   </p>
                 </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link href="/app">
                     <Button size="lg" className="min-w-[220px] bg-white text-cyan-800 hover:bg-slate-100">프로토타입 체험하기</Button>
                   </Link>
@@ -102,7 +102,7 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   ["핵심 가치", "실천 중심의 생활 코칭"],
                   ["주요 대상", "55~72세 본 사용자 + 40~60대 보호자"],
@@ -111,7 +111,7 @@ export default function PresentationPage() {
                 ].map(([label, value]) => (
                   <div key={label} className="rounded-[1.8rem] bg-white/14 p-6 backdrop-blur-sm">
                     <p className="text-sm font-semibold text-white/70">{label}</p>
-                    <p className="mt-2 text-2xl font-bold leading-tight text-white">{value}</p>
+                    <p className="mt-2 text-xl font-bold leading-tight text-white">{value}</p>
                   </div>
                 ))}
               </div>
